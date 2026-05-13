@@ -12,7 +12,7 @@ const navLinks = [
   { label: 'Contact Us', href: '#contact' },
 ]
 
-const mainAppUrl = 'https://loan-orchestrate-app.vercel.app'
+const mainAppUrl = 'https://loan-orchestrate-app.vercel.app/signin'
 
 export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false)
