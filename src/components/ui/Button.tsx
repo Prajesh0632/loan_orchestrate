@@ -1,8 +1,10 @@
 import React from 'react'
+import Link from 'next/link'
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'outline'
   size?: 'sm' | 'md' | 'lg'
+  href?: string
   children: React.ReactNode
 }
 
@@ -10,6 +12,7 @@ export const Button: React.FC<ButtonProps> = ({
   variant = 'primary',
   size = 'md',
   className = '',
+  href,
   children,
   ...props
 }) => {
@@ -27,11 +30,18 @@ export const Button: React.FC<ButtonProps> = ({
     lg: 'px-8 py-4 text-lg',
   }
 
+  const classes = `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`
+
+  if (href) {
+    return (
+      <Link href={href} className={classes}>
+        {children}
+      </Link>
+    )
+  }
+
   return (
-    <button
-      className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
-      {...props}
-    >
+    <button className={classes} {...props}>
       {children}
     </button>
   )

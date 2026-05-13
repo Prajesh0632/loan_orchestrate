@@ -178,3 +178,5 @@ export const Impact: React.FC = () => {
     </SectionWrapper>
   )
 }
+
+

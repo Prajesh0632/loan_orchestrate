@@ -1,14 +1,6 @@
 import type { Metadata } from 'next'
-import { Navbar } from '@/components/sections/Navbar'
-import { Hero } from '@/components/sections/Hero'
-import { Platform } from '@/components/sections/Platform'
-import { Features } from '@/components/sections/Features'
-import { Agents } from '@/components/sections/Agents'
-import { Compliance } from '@/components/sections/Compliance'
-import { Impact } from '@/components/sections/Impact'
-import { Contact } from '@/components/sections/Contact'
-import { Footer } from '@/components/sections/Footer'
 import { ClientProviders } from '@/components/ClientProviders'
+import { AppShell } from '@/components/AppShell'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -25,18 +17,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-navy text-gray-100 antialiased">
-        <Navbar />
-        <main>
-          <Hero />
-          <Platform />
-          <Features />
-          <Agents />
-          <Compliance />
-          <Impact />
-          <Contact />
-        </main>
-        <Footer />
-        <ClientProviders />
+        <ClientProviders>
+          <AppShell>{children}</AppShell>
+        </ClientProviders>
       </body>
     </html>
   )

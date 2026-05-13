@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import { Menu, X } from 'lucide-react'
-import { Button } from '@/components/ui'
+import { ThemeToggleWrapper } from '@/components/ui'
 
 const navLinks = [
   { label: 'Platform', href: '#platform' },
@@ -11,6 +11,8 @@ const navLinks = [
   { label: 'Impact', href: '#impact' },
   { label: 'Contact Us', href: '#contact' },
 ]
+
+const mainAppUrl = 'http://localhost:5173'
 
 export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -52,23 +54,33 @@ export const Navbar: React.FC = () => {
             ))}
           </div>
 
-          {/* Desktop Buttons */}
+          {/* Desktop Buttons & Theme Toggle */}
           <div className="hidden md:flex items-center gap-4">
-            <Button variant="outline" size="sm">
+            <ThemeToggleWrapper />
+            <a
+              href={mainAppUrl}
+              className="font-semibold rounded-xl transition-all duration-300 flex items-center gap-2 px-4 py-2 text-sm border-2 border-cyan-500 text-cyan-400 hover:bg-cyan-500/10"
+            >
               Sign In
-            </Button>
-            <Button variant="primary" size="sm">
+            </a>
+            <a
+              href={mainAppUrl}
+              className="font-semibold rounded-xl transition-all duration-300 flex items-center gap-2 px-4 py-2 text-sm bg-gradient-to-r from-cyan-500 to-emerald-500 text-navy hover:shadow-lg hover:shadow-cyan-500/50 hover:scale-105"
+            >
               Get Started
-            </Button>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-gray-300 hover:text-cyan-400 transition-colors"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <div className="md:hidden flex items-center gap-3">
+            <ThemeToggleWrapper />
+            <button
+              className="text-gray-300 hover:text-cyan-400 transition-colors"
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu */}
@@ -86,12 +98,18 @@ export const Navbar: React.FC = () => {
                 </a>
               ))}
               <div className="flex flex-col gap-2 pt-4 border-t border-gray-700/30">
-                <Button variant="outline" size="md" className="w-full">
+                <a
+                  href={mainAppUrl}
+                  className="w-full font-semibold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 px-6 py-3 text-base border-2 border-cyan-500 text-cyan-400 hover:bg-cyan-500/10"
+                >
                   Sign In
-                </Button>
-                <Button variant="primary" size="md" className="w-full">
+                </a>
+                <a
+                  href={mainAppUrl}
+                  className="w-full font-semibold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 px-6 py-3 text-base bg-gradient-to-r from-cyan-500 to-emerald-500 text-navy hover:shadow-lg hover:shadow-cyan-500/50 hover:scale-105"
+                >
                   Get Started
-                </Button>
+                </a>
               </div>
             </div>
           </div>
